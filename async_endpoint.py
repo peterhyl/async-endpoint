@@ -59,6 +59,7 @@ async def handle_post(request):
                              dumps=lambda x: json.dumps(x, default=json_serial))
 
 
-app = web.Application()
-app.add_routes(routes)
-web.run_app(app)
+if __name__ == '__main__':
+    app = web.Application()
+    app.add_routes(routes)
+    web.run_app(app)
