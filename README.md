@@ -9,9 +9,15 @@ pip install -r requirements.txt
 ```
 Now you can run the application
 ```
-python async_endpoint.py
+python -m aiohttp.web -H localhost -P 8080 endpoint:init_app
 ```
-Application is routed on localhost and port 8080: http://127.0.0.1:8080 .
+or install Gunicorn and run the application as standalone server
+```
+pip install gunicorn
+gunicorn endpoint:init_app --bind localhost:8080 --worker-class aiohttp.GunicornWebWorker
+```
+Application is routed on localhost and port 8080: http://localhost:8080 , you can change the
+host and port.
 
 # Authors
 * **Peter Hyl**
