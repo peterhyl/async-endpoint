@@ -6,6 +6,9 @@ from models.data import Data
 
 
 class DataManager(Manager):
+    """
+    Basic manager for model Data
+    """
     model = Data
 
     def __init__(self, db):

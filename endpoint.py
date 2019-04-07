@@ -15,7 +15,7 @@ logging.config.dictConfig(config.info_dict_config)
 
 logger = logging.getLogger('endpoint')
 
-database = peewee_async.PostgresqlDatabase('test', user='postgres', password='root')
+database = peewee_async.PostgresqlDatabase('test')
 manager = DataManager(database)
 routes = web.RouteTableDef()
 
@@ -26,7 +26,7 @@ def json_serial(obj):
     """
     if isinstance(obj, (datetime, date)):
         return obj.isoformat()
-    raise TypeError("Type %s not serializable" % type(obj))
+    raise TypeError(f"Type {type(obj)} not serializable")
 
 
 @routes.view('/{name}')
@@ -71,6 +71,11 @@ class DataHandler(web.View):
 
 
 async def init_app(_):
+    """
+    Initialize aiohttp application
+
+    :return: aiohttp application variable to run
+    """
     app = web.Application()
     app.add_routes(routes)
     logger.info('Startup async endpoint')

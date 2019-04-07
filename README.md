@@ -2,6 +2,9 @@
 Simple asynchronous endpoint to fetch data from database by name. I used
 non-blocking technology peewee-async and aiohttp for asynchronous web endpoint
 to fetching data(or create new) from database.
+
+Models and managers are basic concept, you can edit or create new models by your
+requirement and database models and structures.
 # Deployment instruction:
 Developed by Python 3.6, you can use virtual env.
 ```
